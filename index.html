@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="utf-8">
+    <title>쇼핑몰 이동 중</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      // 아래에서 주소, 상품명만 변경하여 사용하시면 됩니다.
+      var urlById = {
+        1: 'https://coupa.ng', // 상품명
+        2: 'https://coupa.ng', // 상품명
+        3: 'https://coupa.ng', // 상품명
+        4: 'https://coupa.ng', // 상품명
+        5: 'https://coupa.ng', // 상품명
+        6: 'https://coupa.ng', // 상품명
+        7: 'https://coupa.ng', // 상품명
+        8: 'https://coupa.ng', // 상품명
+        9: 'https://coupa.ng', // 상품명
+        10: 'https://coupa.ng', // 상품명
+        // 새로운 줄을 추가하여 더 많은 상품을 추가하실 수 있습니다. 아래와 같은 형태로 입력해 주시길 바랍니다.
+        // 신규 숫자: '주소', // 상품명
+      };
+
+      function getParam(sname) {
+        var params = location.search.substr(location.search.indexOf("?") + 1);
+        var sval = "";
+        params = params.split("&");
+        for (var i = 0; i < params.length; i++) {
+          temp = params[i].split("=");
+          if ([temp[0]] == sname) { sval = temp[1]; }
+        }
+        return sval;
+      }
+      var id = getParam('id');
+
+      var url = urlById[Number(id)];
+      if (!!url) {
+        setTimeout(function() {
+          window.location = url;
+        }, 3000);
+      }
+    </script>
+
+    <style>
+      body {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        width: 100%;
+      }
+
+      .loading {
+        text-align: center;
+        margin: 0 auto 32px;
+        display: block;
+        width: 100px;
+      }
+
+      .description {
+        margin: 0 auto;
+        display: block;
+        width: calc(100% - 24px);
+        max-width: 332px;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="loading" src="./loading.gif" />
+    <img class="description" src="./description.png" />
+  </body>
+</html>
